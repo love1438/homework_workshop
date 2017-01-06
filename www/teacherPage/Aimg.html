@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<title>轮播管理</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<!--	<script src="js/hwanddis.js"></script>-->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			font-family: "微软雅黑";
+		}
+
+		table {
+			table-layout: fixed;
+		}
+
+		td {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: clip;
+		}
+	</style>
+	<title>讨论区管理页面</title>
+</head>
+
+<body ng-controller="imgcontroller">
+	<div class="panel-heading">
+		<span class="glyphicon glyphicon-book"></span>
+		<h3 class="animated lightSpeedIn" style="display:inline-block;margin-top:0;">轮播图管理</h3>
+		<div class="btn btn-primary pull-right">
+			<a style='color:white' href="Aindex.html">返回</a>
+		</div>
+		<div style="margin-top:20px;">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-6">
+				<input type="text" style="font-size:9px;" maxlength="100" ng-model='link' class="form-control" placeholder="图片点击后的链接地址">
+			</div>
+			<div class="col-xs-4">
+				<div id='shangchuan' ng-click='shangchuan()' class=" btn pull-right bg-primary" style="margin:0;">
+					<span style="color:white">添加轮播图</span>
+				</div>
+			</div>
+			<div style='clear:both'></div>
+		</div>
+	</div>
+	<div>
+		<div>
+			<h5>已为背景的图</h5>
+		</div>
+		<div class="" style="margin-bottom:30px;">
+			<div style="margin-bottom:10px;" ng-repeat='(k,v) in bgImg | filter : {flag:1}' class="col-xs-6 col-md-4 col-lg-3 text-center">
+				<img src="{{v.src}}" alt="" class="img-thumbnail">
+				<div style="margin-top:10px;" ng-click='changeImgFlag(v.imgid,v.flag)' class="btn btn-xs btn-danger">撤下</div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<h5>待选图</h5>
+		</div>
+		<div class="" style="margin-bottom:30px;">
+			<div style="margin-bottom:10px;" ng-repeat='(k,v) in bgImg | filter : {flag:0}' class="col-xs-6 col-md-4 col-lg-3 text-center">
+				<img src="{{v.src}}" alt="" class="img-thumbnail">
+				<div style="margin-top:10px;" ng-click='changeImgFlag(v.imgid,v.flag)' class="btn btn-xs btn-primary">加入轮播</div>
+				<div style="margin-top:10px;" ng-click='delect(v.imgid)' class="btn btn-xs btn-danger">删除</div>
+			</div>
+		</div>
+	</div>
+
+	<div></div>
+	<div style="width:100%;" ng-include='$root.alerturl'></div>
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//cdn.bootcss.com/angular.js/1.3.20/angular.min.js"></script>
+	<script src="//cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+	<!--	载入是否登录验证-->
+	<script src="js/common.js"></script>
+	<script src="js/check.js"></script>
+	<script src="js/Aimg.js"></script>
+</body>
+
+</html>

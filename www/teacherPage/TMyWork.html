@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app' ng-controller='rolecontroller'>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<title>发布的作业</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/TMyWork.css">
+	<style>
+		* {
+			font-family: '宋体';
+			font-size: 13px;
+		}
+	</style>
+</head>
+
+<body style="background: url('images/blli.png') no-repeat;background-size:cover;">
+	<!--<div id="contain">-->
+	<nav class="nav navbar" style="background-color: rgba(255,255,255,0.2);height: 40px;width:100%;min-height:35px;">
+		<span id="pull" class="glyphicon glyphicon-align-justify" style="color:white;margin-left:15px;top:-1px;"></span>
+		<h4 style="color: white;margin-left: 10px;display:inline-block;">我发布的作业</h4>
+	</nav>
+
+	<div ng-controller='worklist' class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="padding-left: 5px;padding-right: 5px;width:85%;margin:0 auto;">
+		<div ng-repeat='class in classes' class="panel panel-default" style="background:none;margin-bottom:35px;">
+			<div style="background-color:white;" class="panel-heading text-center" role="tab" id="heading{{class.cid}}">
+				<h4 class="panel-title"> <a ng-bind='class.name' data-toggle="collapse" data-parent="#accordion" href="#collapse{{class.cid}}" aria-expanded="true" aria-controls="collapse{{class.cid}}"></a></h4>
+				<span class="badge" ng-bind=''>1</span>
+			</div>
+			<div id="collapse{{class.cid}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{class.cid}}">
+				<ul class="list-group worklist">
+					<li style="padding:1px;margin-bottom: 10px;height:50px;relative;" ng-repeat='(key,value) in worklists | filter : {cid:class.cid}' class="list-group-item myWork">
+						<span class="badge" style='position:absolute;' ng-bind='value.number'>1</span>
+						<a href="__TWorkDetail.html?wid={{value.wid}}">
+							<span value='{{value.wid}}' style='display:none' ng-bind='value.wid'></span>
+							<span value='{{value.cid}}' style='display:none' ng-bind='value.cid'></span>
+							<div style="display:inline-block;width:200px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">{{value.title}}</div>
+							<small style="font-size:10px;float:right">编号：<span ng-bind='value.wid'></span></small>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div style="position:fixed;z-index:150" ng-include="$root.navurl"></div>
+
+
+
+	<!--&lt;!&ndash; jQuery文件。务必在bootstrap.min.js 之前引入 &ndash;&gt;-->
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--&lt;!&ndash; 最新的 Bootstrap 核心 JavaScript 文件 &ndash;&gt;-->
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular.js/1.3.20/angular.min.js"></script>
+	<script src="//cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+	<!--	载入是否登录验证-->
+	<script src="js/check.js"></script>
+	<script src="js/TMyWork.js"></script>
+	<script>
+	</script>
+
+</body>
+
+</html>

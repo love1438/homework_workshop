@@ -1,0 +1,111 @@
+<!doctype html>
+<html ng-app='app' ng-controller='rolecontroller'>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<title>发布作业</title>
+	<meta charset=utf-8>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/TAddWork.css">
+	<style>
+		* {
+			font-family: '宋体';
+			font-size: 13px;
+			/*			background-size: */
+		}
+	</style>
+</head>
+
+<body ng-controller='text' style="background: url('images/blli.png') no-repeat;background-size:cover;">
+	<!--	<div id='bg' style="position:fixed;height:100%;width:100%;z-index:-1;background: url('images/blli.png') no-repeat;background-size: 100%;"></div>-->
+	<nav class="nav navbar center-block _nav " style="background-color: rgba(255,255,255,0.2);min-height: 40px;">
+		<!--顶部按钮-->
+		<span class="btn glyphicon glyphicon-align-justify" style="color: white;top: -2px;" id='pull' data-toggle="modal" data-target=".bs-example-modal-lg"></span>
+		<div style="color:white;margin: 0 auto;width: 100px;display: inline-block;line-height: 40px">
+			<h4>发布作业</h4></div>
+	</nav>
+
+	<!-- 主题内容 -->
+	<div class="container" style="width:85%;background-color:rgba(255,255,255,0.2);margin-bottom:30px;margin-top: 15px;margin-left:8%;">
+		<form role="form">
+			<div class="form-group">
+				<label for="title" class="title">标题</label>
+				<input type="text" class="form-control" maxlength="20" id="title" placeholder="作业标题...">
+			</div>
+			<div class="form-group">
+				<label for="content" class="title">内容</label>
+				<textarea class="form-control" id="content" maxlength="200" placeholder="主要内容..." style="height:150px;width:100%;resize:none"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="" class="title">课程</label>
+				<select ng-controller='class' class="form-control" style="text-align:center" name="" id="Sselect">
+					<option id='option' value="" class="">请选择...</option>
+					<option ng-repeat="class in classes" value="{{class.name}}" class="">{{class.name}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="" class="title">章节</label>
+				<select class="form-control" name="" id="section">
+					<option value="1" class="active">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="" class="title">截止时间</label>
+				<br>
+				<input type="date" id="time" style="">
+			</div>
+			<div class="form-group">
+				<label for="mark" class="title">备注</label>
+				<textarea class="form-control" id="content" maxlength="100" placeholder="注意事项" style="height:50px;width:100%;resize:none;"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="shangchuan" class="title">附件:</label>
+				<div id='shangchuan' class="btn btn-primary">上传文件</div>
+				<span ng-show='flag1' id='wenjian' style="color:white;margin:10px 0 0 8px;" ng-bind='sworkinfo.annex'>....</span>
+				<span ng-show='flag1' style="margin-left:20px;color:white;" ng-click="review()" id="review">预览</span>
+				<div id="jindu" ng-show='flag' style="width:200px;margin:12px;background:#d9d9d9;border-radius: 8px;">
+					<div id='wancheng' style="background:green;width:0;border-radius: 8px;margin-left:0px;">0%</div>
+				</div>
+				<br>
+
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog" style="height:100%;">
+					<div class="modal-content" style="height:90%;">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="margin-right:20px;">&times;</span><span class="sr-only">Close</span></button>
+
+						<iframe id="view" style="border:none;" width="100%" height="90%" src="" class="modal-body"></iframe>
+					</div>
+				</div>
+			</div>
+
+
+			<div id="up" class="btn btn-primary pull-right" style="margin-bottom:15px;">
+				<span ng-click="check()">提交</span>
+			</div>
+			<button id="reset" ng-click="reset()" type="reset" class="btn btn-danger pull-right" style="margin-right:50px">重置</button>
+		</form>
+	</div>
+	<div style="width:100%;" ng-include='$root.alerturl'></div>
+	<div style="position:fixed;z-index:150" ng-include="$root.navurl"></div>
+
+
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+	<script src="//cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/check.js"></script>
+	<script src="js/TAddWork.js"></script>
+
+</body>
+
+</html>

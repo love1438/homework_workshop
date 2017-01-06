@@ -1,0 +1,101 @@
+
+
+	.user_fk {
+		border-radius: 6px;
+		height: 150px;
+		background: rgba(0, 0, 255, 0.0);
+		-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+		-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+		box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+	}
+
+	a:hover {
+		color: white;
+		text-decoration: none;
+	}
+
+	a {
+		color: white;
+	}
+
+	#line div {
+		height: 20px;
+		float: left;
+	}
+
+	.line1 {
+		width: 40%;
+		position: relative;
+		bottom: 9px;
+	}
+
+	#line2 {
+		width: 20%;
+		text-align: center;
+		line-height: 20px;
+	}
+
+	.modal-backdrop {
+		background: #CCC;
+	}
+
+	.modal-content {
+		width: 80%;
+		left: 10%;
+		top: 150px;
+		color: black;
+		background: rgb(232, 228, 228)
+	}
+
+	swiper-slide {
+		height: 10px
+	}
+
+	swiper-slide-active {
+		height: auto
+	}
+
+	#search {
+		width: 75px;
+		height: 26px;
+		background: #dcdbdb;
+		position: relative;
+		left: 24px;
+		top: 8px;
+		border-radius: 28px;
+		font-size: 5px;
+		line-height: 26px;
+		color: #1d0f0f;
+	}
+
+	#searchPage {
+		position: absolute;
+		top: 0;
+		background: gray;
+		width: 100%;
+		z-index: 1090;
+		display: none;
+	}
+
+	#searchInput {
+		width: 100%;
+		margin: 4px;
+		border-radius: 20px;
+		border: none;
+		margin-left: 10px;
+		outline: none;
+		text-align: center;
+		font-size: 10px;
+		height: 22px;
+		display: flex;
+		flex-direction: row;
+	}
+
+	#giveUp {
+		letter-spacing: 1px;
+		font-size: 15px;
+		padding: 3px 6px 6px 14px;
+		background: #CCC;
+		border-radius: 31px;
+		height: 27px;
+	}

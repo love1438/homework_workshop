@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<title>资料设置</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body ng-controller="info">
+	<div style="background: #3b5e72;background-size:100%;height:40px;">
+		<nav class="nav navbar" style="position: absolute;">
+			<span id="pull" class="glyphicon glyphicon-align-justify" style="color:white;margin-left:20px;"> </span>
+			<h4 style="color: white;margin-left: 10px;display:inline-block;">信息设置</h4>
+		</nav>
+	</div>
+	<div class="well">
+		<div style="background: url('images/pic.jpg') 0 -400px;background-size:100% 100%;width:100%;height:200px;" class="text-center">
+			<div style="width:100px;margin: 0 auto;">
+				<img src="{{info.img}}" onclick="uploadpic()" id="myImg" style="width: 100px;height:100px;border-radius: 50px;margin-top:30px;" />
+			</div>
+			<p style="color:white;margin-top:10px;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" ng-bind="info.nick"></p>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading"> 基本信息设置</div>
+		<div class="panel-body">
+			<form role="form">
+				<div class="form-group">
+					<label>性别：</label>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="man" checked> 男
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="women"> 女
+					</label>
+				</div>
+				<div class="form-group">
+					<label>职业：</label>
+					<input type="text" class="form-control" placeholder="" value="{{info.job}}">
+				</div>
+				<div class="form-group">
+					<label>我的签名：</label>
+					<input type="text" class="form-control" placeholder="" value="{{info.autograph}}">
+				</div>
+				<div class="form-group">
+					<label>身份：</label>
+					<input type="text" class="form-control" placeholder="" disabled value="{{info.name}}">
+				</div>
+				<div ng-if='info.name=="学生"' class='col-xs-12' ng-click='sureTeacher()' style="text-decoration:underline;color: #888;cursor: pointer;">申请为老师（需要管理员确认...）</div>
+			</form>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading"> 高级信息设置</div>
+		<div class="panel-body">
+			<form role="form">
+				<div class="form-group">
+					<label>真实姓名：</label>
+					<input type="text" class="form-control" placeholder="" value="{{info.self}}">
+				</div>
+				<div class="form-group">
+					<label>学校/公司：</label>
+					<input type="text" class="form-control" placeholder="" value="{{info.company}}">
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">邮箱：</label>
+					<input type="email" class="form-control" id="exampleInputEmail1" placeholder="email" value="{{info.email}}">
+				</div>
+				<div style="width:300px;margin:0 auto;" class="text-center">
+					<button type="button" class="btn btn-denger col-xs-6" ng-click="reset()">重置</button>
+					<button type="button" class="btn btn-primary col-xs-6" ng-click="save()">保存</button>
+				</div>
+			</form>
+		</div>
+
+		<div style="width:100%;" ng-include='$root.alerturl'></div>
+		<div style="position:fixed;z-index:150" ng-include="$root.navurl"></div>
+	</div>
+
+	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="//cdn.bootcss.com/angular.js/1.4.3/angular.min.js"></script>
+	<script src="//cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+	<script src="js/userInfo.js"></script>
+	<!--    <script src="js/check.js"></script>-->
+	<script src="js/common.js"></script>
+</body>
+
+</html>

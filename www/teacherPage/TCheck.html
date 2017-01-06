@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app' ng-controller='rolecontroller'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>批改作业</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        * {
+            font-family: "宋体";
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body ng-controller="checkWork" style="background: url('images/blli.png') no-repeat;background-size:cover;">
+    <!--	<div id='bg' style="position:fixed;height:100%;width:100%;z-index:-1;background: url('images/blli.png') no-repeat;background-size: 100%;"></div>-->
+    <!-- 顶部按钮-->
+    <nav class="nav navbar center-block _nav " style="background-color: rgba(255,255,255,0.2);min-height: 35px;width:100%">
+        <!--顶部按钮-->
+        <span class="btn glyphicon glyphicon-align-justify" style="color: white;top: -4px;" id='pull'></span>
+        <div style="color:white;margin: 0 auto;width: 100px;display: inline-block;line-height: 40px">
+            <h4>作业批改</h4></div>
+    </nav>
+    <!-- 大标题-->
+
+    <!-- 主题内容 -->
+    <div class="container" style="width:85%;background-color:rgba(255,255,255,0.2);margin:0 auto;margin-bottom:30px;z-index: 50;color:white">
+
+        <form style="margin-top:20px" class="" role="form">
+            <div class="form-group">
+                <p class="panel-title">
+                    <label>标题：</label><span ng-bind="workinfo.title"></span></p>
+            </div>
+            <div class="form-group">
+                <p class="panel-title">
+                    <label>提交人：</label><span ng-bind="workinfo.nick"></span></p>
+            </div>
+            <div class="form-group">
+                <label for="content">内容：</label>
+                <textarea class="form-control" id="content" disabled placeholder="Content" style="height:120px;resize:none" ng-bind="workinfo.answer"></textarea>
+            </div>
+            <div class="form-group">
+                <p class="panel-title">
+                    <label>查看附件：</label>
+                    <span id='wenjian' href='{{workinfo.annex}}' ng-click="view()"><span ng-bind='workinfo.filename'></span></span>
+            </div>
+            <div class="form-group">
+                <p class="panel-title">
+                    <label>提交日期：</label><span ng-bind="workinfo.creatdate"></span></p>
+            </div>
+            <div class="form-group">
+                <label>评分：</label>
+                <br>
+                <input value='{{workinfo.score}}' type="number" class="form-control" id="score" style=" width:100%;display:inline-block;text-align:center" oninput="if(value.length>3)value=value.slice(0,3)">
+            </div>
+            <div class="form-group">
+                <label>建议：</label>
+                <textarea class="form-control" id="comment" placeholder="Content" maxlength="100" style="height:100px;resize:none" ng-bind='workinfo.tadvice'></textarea>
+            </div>
+            <div type="submit" class="btn btn-primary pull-right" style="margin-bottom:15px;" ng-click="saveIt()">保存</div>
+            <div type="reset" class="btn btn-danger pull-right" value="取消" style="margin-right:50px" ng-click='back()'>取消</div>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="height:100%;">
+            <div class="modal-content" style="height:90%;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="margin-right:20px;">&times;</span><span class="sr-only">Close</span></button>
+
+                <iframe id="view" style="border:none;" width="100%" height="90%" src="" class="modal-body"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="width:100%;" ng-include='$root.alerturl'></div>
+    <div style="position:fixed;z-index:150" ng-include="$root.navurl"></div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.3.20/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js"></script>
+    <!--	载入是否登录验证-->
+    <script src="js/check.js"></script>
+    <script src="js/TCheck.js"></script>
+</body>
+
+</html>

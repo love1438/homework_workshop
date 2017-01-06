@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app' ng-controller='rolecontroller'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <title>我的作业</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/SMyWork.css">
+    <style>
+        * {
+            font-family: "微软雅黑";
+        }
+    </style>
+</head>
+
+<body style="background: url('images/blli.png') no-repeat;background-size:cover;">
+    <!--	<div id='bg' style="position:fixed;height:100%;width:100%;z-index:-1;background: url('images/blli.png') no-repeat;background-size: 100%;"></div>-->
+    <!--<div id="contain">-->
+    <nav class="nav navbar" style="background-color: rgba(255,255,255,0.2);width:100%;min-height:35px;">
+        <span id="pull" class="glyphicon glyphicon-align-justify" style="color:white;margin-left:20px;"> </span>
+        <h4 style="color: white;margin-left: 10px;display:inline-block;">我的作业</h4>
+    </nav>
+
+    <div ng-controller='SMyWorkController' class="" style="padding-left: 5px;padding-right: 5px;width: 90%; margin: 0 auto;" id="myDiv">
+        <a href="#">
+            <div id="myDiv1" class="btn" ng-click="chose()">全部作业</div>
+        </a>
+        <a href="#">
+            <div class="myDiv2 btn" style="margin-top:15px" ng-click="chose('2')">已提交</div>
+        </a>
+        <a href="#">
+            <div class="myDiv2 btn" style="margin-top:8px" ng-click="chose('1')">未提交</div>
+        </a>
+        <div class="form-group">
+            <input style="font-size:0.7em;text-align:center" ng-model='query' type="text" class="form-control" placeholder="查询">
+        </div>
+
+
+        <ul class="list-group worklist" style="list-style: none;" ng-if='dat.length!=0'>
+            <li>
+                <p>作业标题</p>
+                <p>课程</p>
+                <p>截止日期</p>
+            </li>
+            <a ng-repeat='(key,val) in dat |filter:query |orderBy:"-enddate"' href="./__SWorkDetail.html?wid={{val.wid}}">
+                <li>
+                    <p ng-bind="val.title" style="overflow:hidden;"></p>
+                    <p ng-bind="val.name"></p>
+                    <p ng-bind="val.enddate"></p>
+                </li>
+            </a>
+        </ul>
+        <div id="none" class="text center" style="display:none;width:100%;text-align:center;margin-top:15px;color:white;">
+            <img src="images/noInfo.gif" alt="">
+            <div style="margin-top:30px;">没有可显示的数据啦！</div>
+        </div>
+    </div>
+    <div style="position:fixed;z-index:150 " ng-include="$root.navurl "></div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js "></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js "></script>
+    <script src="//cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+    <script src="//cdn.bootcss.com/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js "></script>
+
+    <script src="js/check.js "></script>
+    <script src="js/SMyWork.js "></script>
+</body>
+
+</html>
